@@ -1,0 +1,5 @@
+/node_modules
+
+// Hidden Files
+.history
+.vscode

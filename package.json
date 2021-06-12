@@ -1,0 +1,19 @@
+{
+  "name": "my-posts",
+  "version": "1.0.0",
+  "description": "This is my first node.js backend project",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "first",
+    "app",
+    "first-app"
+  ],
+  "author": "Ade-Onojobi Oluwwadewalade",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
