@@ -4,7 +4,8 @@
   "description": "This is my first node.js backend project",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "nodemon index.js"
   },
   "keywords": [
     "first",
@@ -14,6 +15,10 @@
   "author": "Ade-Onojobi Oluwwadewalade",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
