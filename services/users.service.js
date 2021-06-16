@@ -6,10 +6,10 @@ exports.register = ( data, callback ) => {
         [data.firstName, data.lastName, data.emailId, data.password],
         (error, results, fields) => {
             if (error) {
-                return callback(error, `Registration Failed`);
+                return callback(error, `User Registration Failed`);
             }
 
-            return callback(null, `Registration Successful`);
+            return callback(null, `User Registration Successful`);
         }
     );
 };

@@ -9,11 +9,11 @@ const port = 3001;
 
 app.use(bodyParser.json());
 
-app.use('/', ( req , res ) => {
-    console.log('Congrats! You are at first API home route!!')
-    return res.status(200).send('Welcome to the first API homepage!')
-})
-
+// app.use('/', ( req , res ) => {
+    // console.log('Congrats! You are at first API home route!!')
+    // return res.status(200).send('Welcome to the first API homepage!')
+// })
+// 
 // TEST ENDPOINT
 app.use('/test', (req, res) => {
     console.log("Congrats! Your test route works!!!");
