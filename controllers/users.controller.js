@@ -50,10 +50,9 @@ exports.login = ( req, res, next) => {
         if (results === 'User Credentials Invalid' ) {
             return res.status(406).send({
                 success: false, 
-                data: 'Invallid User Credentials'
+                data: 'Invalid User Credentials'
             })
         }
-        console.log(results)
 
         return res.status(200).send({
             success: true,
