@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
+const postRoutes = require('./routes/posts.route');
 const userRoutes = require('./routes/users.route');
 
 const app = express();
