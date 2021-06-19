@@ -49,4 +49,6 @@ router.post('/add-post', postController.addPost);
 *              description: Internal Server Error
 */
 
+router.get('/get-all-posts', postController.getAllPosts)
+
 module.exports = router;
