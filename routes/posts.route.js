@@ -27,20 +27,22 @@ router.post('/add-post', postController.addPost);
 *                      type: string
 *                      minLength: 1
 *                      maxlength: 2000
-*                      example: This is a sample blog post.
+*                      example: This is a sample blog post. For test purposes only
 *                  imagePath:
 *                      type: string
 *                      minLength: 1
 *                      maxLength: 1000
-*                      example: image01.png
+*                      example: /funny/image001.png
 *                  addedByUserId:
 *                      type: integer
-*                      example: 15
+*                      example: 155
 *      responses:
 *          '200':
  *             description: Post has been added Successfully
 *          '400':
 *              description: Post could not be submitted
+*          '404':
+*              description: Post route not found
 *          '406':
 *              description: Invalid posts credentials
 *          '500':

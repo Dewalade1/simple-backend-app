@@ -78,6 +78,7 @@ app.use('/test', (req, res) => {
 
 // MAIN API ENDPOINTS
 app.use('/users', userRoutes);
+app.use('/posts', postRoutes);
 
 app.listen( port , () => {
     console.log('\n[*] Starting first-post app');
