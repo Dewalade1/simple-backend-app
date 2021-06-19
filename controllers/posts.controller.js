@@ -34,13 +34,14 @@ exports.addPost = ( req , res , next ) => {
 }
 
 exports.getAllPosts = (req, res, next ) => {
+    const data = {}
 
     postService.getAllPosts(data, (error, results ) => {
         if (error) {
             console.log(error)
             return res.status(400).send({
                 success: false, 
-                data: 'Error occured when fetching posts'
+                data: 'Error occured while fetching posts'
             })
         }
 

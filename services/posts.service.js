@@ -18,7 +18,7 @@ exports.getAllPosts = (data, callback) => {
     db.query(
         `SELECT post.id AS postId, post.description, post.datetimeCreated,
          post.likeCount, post.dislikeCount, post.addedByUserId, user.firstName,
-         user.lastName FROM posts AS post INNERJOIN users AS user ON post.addedByUserId 
+         user.lastName FROM posts AS post INNER JOIN users AS user ON post.addedByUserId 
          = user.id`,
          [],
          (error, results, fields) => {

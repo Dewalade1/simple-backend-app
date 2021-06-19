@@ -50,5 +50,24 @@ router.post('/add-post', postController.addPost);
 */
 
 router.get('/get-all-posts', postController.getAllPosts)
+/**
+* @swagger
+* /posts/get-all-posts:
+*   get:
+*      description: Gets all posts ever added to our blog
+*      tags:
+*          - posts
+*      responses:
+*          '200':
+*              description: Query successful. Found and displayed all the available posts
+*          '204':
+*              description: Query successful but found no posts
+*          '400':
+*              description: An error occured while fetching posts. Possibly a bad request
+*          '404':
+*              description: get-all-posts route not found
+*          '500':
+*              description: Internal Server Error
+*/
 
 module.exports = router;
