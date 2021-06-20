@@ -71,7 +71,7 @@ exports.addPostComment = (req, res, next) => {
                 console.log(error);
                 return res.status(406).send({
                     success: false,
-                    data: 'Could not add comment. Invalid UserId was given'
+                    data: 'Could not add comment. Invalid postId or userId was given'
                 });
             } else if (error.errno !== 1452) {
                 console.log(error);

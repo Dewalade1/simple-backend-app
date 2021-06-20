@@ -71,5 +71,46 @@ router.get('/get-all-posts', postController.getAllPosts)
 */
 
 router.post('/add-post-comment', postController.addPostComment)
+/**
+* @swagger
+* /posts/add-post-comment:
+*   post:
+*      description: Route for adding comments to saved posts.
+*      tags:
+*          - posts
+*      parameters:
+*          - in: body
+*            name: Comment
+*            description: Post Comment data
+*            schema:
+*              type: object
+*              required:
+*                 - postId
+*                 - comment
+*                 - addedByUserId
+*              properties:
+*                  postId:
+*                      type: integer
+*                      example: 1135
+*                  comment:
+*                      type: string
+*                      minLength: 1
+*                      maxLength: 1000
+*                      example: Hello world
+*                  addedByUserId:
+*                      type: integer
+*                      example: 295
+*      responses:
+*          '201':
+ *             description: Comment has been added to post Successfully
+*          '400':
+*              description: Comment could not be submitted
+*          '404':
+*              description: Comment route not found
+*          '406':
+*              description: Invalid comment credentials. Check User ID or post ID
+*          '500':
+*              description: Internal Server Error
+*/
 
 module.exports = router;
