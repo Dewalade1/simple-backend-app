@@ -88,3 +88,31 @@ exports.addPostComment = (req, res, next) => {
         });
     })
 }
+
+exports.getAllCommentsForOnePost = ( req, res, next ) => {
+    const data = {
+        postId: req.query.postId,
+    }
+
+    postService.getAllCommentsForOnePost(data, ( error, results) => {
+        if (error) {
+            console.log(error);
+            return res.status(400).send({
+                success: false,
+                data: 'Error occored while fetching comment'
+            });
+        }
+
+        if (results.length === 0) {
+            return res.status(204).send({
+                success: true,
+                data: 'No comments found for this post'
+            });
+        };
+
+        return res.status(200).send({
+            success: true,
+            data: results
+        });
+    });
+};

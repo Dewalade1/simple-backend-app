@@ -113,4 +113,6 @@ router.post('/add-post-comment', postController.addPostComment)
 *              description: Internal Server Error
 */
 
+router.get('/get-all-comments-for-one-post', postController.getAllCommentsForOnePost)
+
 module.exports = router;
