@@ -10,14 +10,14 @@ exports.addPost = ( req , res , next ) => {
 
     postService.addPost( data, (error, results ) => {
         if (error) {
-            if (error.errno !== 1452) {
+            if (error.errno === 1452) {
                 console.log(error);
                 return res.status(406).send({
                     success: false, 
-                    data: 'Post addition failed. Invalid userid in post'
+                    data: 'Post addition failed. Invalid userid in post data'
                 });
 
-            } else if (error.errno === 1452) {
+            } else if (error.errno !== 1452) {
                 console.log(error);
                 return res.status(400).send({
                     success: false, 
@@ -56,5 +56,35 @@ exports.getAllPosts = (req, res, next ) => {
             success: true,
             data: results
         })
+    })
+}
+
+exports.addPostComment = (req, res, next) => {
+    const data = {
+        postId: req.body.postId,
+        comment: req.body.comment,
+        addedByUserId: req.body.addedByUserId
+    };
+    postService.addPostComment( data,( error, results ) => {
+        if (error) {
+            if (error.errno === 1452) {
+                console.log(error);
+                return res.status(406).send({
+                    success: false,
+                    data: 'Could not add comment. Invalid UserId was given'
+                });
+            } else if (error.errno !== 1452) {
+                console.log(error);
+                return res.status(400).send({
+                    success: false,
+                    data: 'Bad Request'
+                });
+            };
+        };
+
+        return res.status(201).send({
+            success: true,
+            data: results
+        });
     })
 }

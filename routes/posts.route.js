@@ -37,14 +37,14 @@ router.post('/add-post', postController.addPost);
 *                      type: integer
 *                      example: 155
 *      responses:
-*          '200':
+*          '201':
  *             description: Post has been added Successfully
 *          '400':
 *              description: Post could not be submitted
 *          '404':
 *              description: Post route not found
 *          '406':
-*              description: Invalid posts credentials
+*              description: Invalid posts credentials. Check User ID
 *          '500':
 *              description: Internal Server Error
 */
@@ -69,5 +69,7 @@ router.get('/get-all-posts', postController.getAllPosts)
 *          '500':
 *              description: Internal Server Error
 */
+
+router.post('/add-post-comment', postController.addPostComment)
 
 module.exports = router;

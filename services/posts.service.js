@@ -30,3 +30,18 @@ exports.getAllPosts = (data, callback) => {
          }
     );
 };
+
+exports.addPostComment = (data, callback) => {
+    db.query(
+        `INSERT INTO comments (postId, comment, datetimeCreated, addedByUserId)
+         VALUES ( ? , ? , ? , ? )`,
+        [data.postId, data.comment, new Date(), data.addedByUserId],
+        (error, results, fields) => {
+            if (error) {
+                return callback(error);
+            }
+
+            return callback(null, 'Comment Added Successfully')
+        }
+    )
+}
