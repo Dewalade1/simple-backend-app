@@ -75,7 +75,7 @@ exports.likePost = ( data , callback ) => {
             if (results.affectedRows === 1) {
                 return callback(null, 'Post was liked')
             } else {
-                return callback(new Error('Post doesnt exist'))
+                return callback(new Error('Post does not exist'))
             }
          }
     )

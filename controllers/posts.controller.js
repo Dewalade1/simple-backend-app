@@ -124,12 +124,20 @@ exports.likePost = ( req, res, next ) => {
 
     postService.likePost(data, (error, results) => {
         if (error) {
+            console.log(error)
+            if (error === 'Post does not exist') {
+                return res.status(404).send({
+                    success: false,
+                    data: error
+                })
+            }
+
             return res.status(400).send({
                 success: false,
                 data: 'Could not like Post'
             })
         }
 
-        return res.status(204)
+        return res.status(204).send()
     })
 }

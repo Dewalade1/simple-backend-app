@@ -141,5 +141,34 @@ router.get('/get-all-comments-for-one-post', postController.getAllCommentsForOne
 */
 
 router.put('/like-post', postController.likePost)
+/**
+* @swagger
+* /posts/like-post:
+*   put:
+*      description: Used to like a blog post
+*      tags:
+*          - posts
+*      parameters:
+*          - in: body
+*            name: Post
+*            description: Data of post we want to like
+*            schema:
+*              type: object
+*              required:
+*                 - postId
+*              properties:
+*                  postId:
+*                      type: integer
+*                      example: 1135
+*      responses:
+*          '204':
+*              description: Post was successfully liked
+*          '400':
+*              description: An error occured while liking the post. Possibly a bad request
+*          '404':
+*              description: Post to be liked was not found
+*          '500':
+*              description: Internal Server Error
+*/
 
 module.exports = router;
