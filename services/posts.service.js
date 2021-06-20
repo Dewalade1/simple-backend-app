@@ -84,8 +84,8 @@ exports.likePost = ( data , callback ) => {
 exports.dislikePost = ( data , callback ) => {
     db.query(
         `UPDATE posts
-         SET dislikeCount = dislikeCount + 1
-         WHERE id = ?`
+         SET likeCount = likeCount - 1
+         WHERE id = ?`,
          [data.postId],
          (error, results, fields) => {
              if (error) {
@@ -98,5 +98,23 @@ exports.dislikePost = ( data , callback ) => {
                  return callback(new Error('Post does not exist'))
              }
          }
+    )
+}
+
+exports.deletePost = ( data , callback ) => {
+     db.query(
+        `DELETE FROM posts
+         WHERE id = ?`,
+         [data.postId],
+         (error, results, fields) => {
+            if (error) {
+                return callback(error);
+            }
+            if (results.affectedRows === 1) {
+                return callback(null, 'Post was Deleted Successfully')
+            } else {
+                return callback(new Error('Post does not exist'))
+            }
+        }
     )
 }

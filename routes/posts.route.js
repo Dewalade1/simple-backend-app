@@ -172,5 +172,36 @@ router.put('/like-post', postController.likePost)
 */
 
 router.put('/dislike-post', postController.dislikePost)
+/**
+* @swagger
+* /posts/dislike-post:
+*   put:
+*      description: Used to dislike a blog post
+*      tags:
+*          - posts
+*      parameters:
+*          - in: body
+*            name: Post
+*            description: Data of post we want to dislike
+*            schema:
+*              type: object
+*              required:
+*                 - postId
+*              properties:
+*                  postId:
+*                      type: integer
+*                      example: 1135
+*      responses:
+*          '204':
+*              description: Post was successfully disliked
+*          '400':
+*              description: An error occured while trying to dislike the post. Possibly a bad request
+*          '404':
+*              description: Post to be disliked was not found
+*          '500':
+*              description: Internal Server Error
+*/
+
+router.delete('/delete-post', postController.deletePost)
 
 module.exports = router;

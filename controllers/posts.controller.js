@@ -155,14 +155,41 @@ exports.dislikePost = (req, res, next ) => {
                     success: false,
                     data: 'Post does not exist'
                 });
+            } else {
+                return res.status(400).send({
+                    success: false,
+                    data: 'could not dislike this post'
+                })
             }
-
-            return res.status(400).send({
-                success: false,
-                data: 'could not dislike this post'
-            })
         }
 
         return res.status(204).send()
+    })
+}
+
+exports.deletePost = ( req , res , next ) => {
+    const data = {
+        postId: req.query.postId,
+    }
+    postService.deletePost( data , ( error , results ) => {
+        if (error) {
+            console.log(error)
+            if (error === 'Post does not exist'){
+                return res.status(404).send({
+                    success: false,
+                    data: 'Post does not exist'
+                })
+            } else {
+                return res.status(400).send({
+                    success: false,
+                    data: 'Could not delete Post'
+                })
+            }
+        }
+
+        return res.status(200).send({
+            success: true,
+            data: 'Post Successfully Deleted'
+        })
     })
 }
