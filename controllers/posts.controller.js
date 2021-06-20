@@ -116,3 +116,20 @@ exports.getAllCommentsForOnePost = ( req, res, next ) => {
         });
     });
 };
+
+exports.likePost = ( req, res, next ) => {
+    const data = {
+        postId: req.body.postId,
+    }
+
+    postService.likePost(data, (error, results) => {
+        if (error) {
+            return res.status(400).send({
+                success: false,
+                data: 'Could not like Post'
+            })
+        }
+
+        return res.status(204)
+    })
+}

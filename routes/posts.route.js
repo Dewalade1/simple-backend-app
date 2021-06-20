@@ -140,4 +140,6 @@ router.get('/get-all-comments-for-one-post', postController.getAllCommentsForOne
 *              description: Internal Server Error
 */
 
+router.put('/like-post', postController.likePost)
+
 module.exports = router;

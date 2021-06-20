@@ -61,3 +61,22 @@ exports.getAllCommentsForOnePost = (data, callback) => {
     }
     )
 }
+
+exports.likePost = ( data , callback ) => {
+    db.query(
+        `UPDATE posts
+         SET likeCount = likeCount + 1
+         WHERE id = ?`,
+         [data.postId],
+         (error, results, fields) => {
+             if (error) {
+                 return callback(error);
+             }
+            if (results.affectedRows === 1) {
+                return callback(null, 'Post was liked')
+            } else {
+                return callback(new Error('Post doesnt exist'))
+            }
+         }
+    )
+}
