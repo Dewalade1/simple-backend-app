@@ -49,9 +49,8 @@ exports.addPostComment = (data, callback) => {
 exports.getAllCommentsForOnePost = (data, callback) => {
     db.query(
         `SELECT comments.comment, comments.datetimeCreated, comments.addedByUserId,
-         users.firstName, user.lastName FROM comments INNER JOIN users ON 
-         comments.addByUserId = users.id`
-    ),
+         users.firstName, users.lastName FROM comments INNER JOIN users ON 
+         comments.addedByUserId = users.id WHERE comments.postId = ?`,
     [data.postId],
     (error, results, fields) => {
         if (error) {
@@ -60,4 +59,5 @@ exports.getAllCommentsForOnePost = (data, callback) => {
 
         return callback(null, results)
     }
+    )
 }

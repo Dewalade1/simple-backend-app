@@ -114,5 +114,30 @@ router.post('/add-post-comment', postController.addPostComment)
 */
 
 router.get('/get-all-comments-for-one-post', postController.getAllCommentsForOnePost)
+/**
+* @swagger
+* /posts/get-all-comments-for-one-post:
+*   get:
+*      description: Gets all the comments that were added to a single blog post
+*      tags:
+*          - posts
+*      parameters:
+*          - in: query
+*            name: postId
+*            type: integer
+*            description: Id of post whose comment we want to fetch
+*            required: true
+*      responses:
+*          '200':
+*              description: Query successful. Found and displayed all the available comments
+*          '204':
+*              description: Query successful but found no comments
+*          '400':
+*              description: An error occured while fetching comments. Possibly a bad request
+*          '404':
+*              description: get-all-comments-for-one-post not found
+*          '500':
+*              description: Internal Server Error
+*/
 
 module.exports = router;
