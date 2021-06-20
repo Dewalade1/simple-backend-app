@@ -80,3 +80,23 @@ exports.likePost = ( data , callback ) => {
          }
     )
 }
+
+exports.dislikePost = ( data , callback ) => {
+    db.query(
+        `UPDATE posts
+         SET dislikeCount = dislikeCount + 1
+         WHERE id = ?`
+         [data.postId],
+         (error, results, fields) => {
+             if (error) {
+                 return callback(error);
+             }
+
+             if (results.affectedRows === 1) {
+                 return callback(null, 'Post was Disliked')
+             } else {
+                 return callback(new Error('Post does not exist'))
+             }
+         }
+    )
+}

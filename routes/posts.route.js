@@ -171,4 +171,6 @@ router.put('/like-post', postController.likePost)
 *              description: Internal Server Error
 */
 
+router.put('/dislike-post', postController.dislikePost)
+
 module.exports = router;

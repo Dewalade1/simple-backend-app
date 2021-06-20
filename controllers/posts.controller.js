@@ -141,3 +141,28 @@ exports.likePost = ( req, res, next ) => {
         return res.status(204).send()
     })
 }
+
+exports.dislikePost = (req, res, next ) => {
+    const data = {
+        postId: req.body.postId,
+    }
+
+    postService.dislikePost( data, ( error, results ) => {
+        if (error) {
+            console.log(error)
+            if (error === 'Error: Post does not exist') {
+                return res.status(404).send({
+                    success: false,
+                    data: 'Post does not exist'
+                });
+            }
+
+            return res.status(400).send({
+                success: false,
+                data: 'could not dislike this post'
+            })
+        }
+
+        return res.status(204).send()
+    })
+}
