@@ -8,7 +8,7 @@ const userRoutes = require('./routes/users.route');
 
 const app = express();
 
-const port = 3001;
+const port = process.env.PORT || 8080;
 
 app.use(bodyParser.json());
 
@@ -32,11 +32,11 @@ const swaggerDocs = swaggerJsdoc(swaggerOption);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 /* Swagger Initialization - END */
 
-// app.use('/', ( req , res ) => {
-    // console.log('Congrats! You are at first API home route!!')
-    // return res.status(200).send('Welcome to the first API homepage!')
-// })
-
+app.use('/index', ( req , res ) => {
+    console.log('Congrats! You are at first API home route!!')
+    return res.status(200).send('Welcome to the first API homepage!')
+})
+// 
 // TEST ENDPOINT
 app.use('/test', (req, res) => {
     console.log("Congrats! Your test route works!!!");

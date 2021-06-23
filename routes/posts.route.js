@@ -203,5 +203,28 @@ router.put('/dislike-post', postController.dislikePost)
 */
 
 router.delete('/delete-post', postController.deletePost)
+/**
+* @swagger
+* /posts/delete-post:
+*   delete:
+*      description: Used to delete an existing blog post
+*      tags:
+*          - posts
+*      parameters:
+*          - in: query
+*            name: PostId
+*            type: integer
+*            description: ID of post we want to be deleted
+*            required: true
+*      responses:
+*          '200':
+*              description: Post was successfully deleted
+*          '400':
+*              description: An error occured while trying to deleted the post. Possibly a bad request
+*          '404':
+*              description: Post to be deleted was not found
+*          '500':
+*              description: Internal Server Error
+*/
 
 module.exports = router;
