@@ -1,3 +1,4 @@
+const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const swaggerJsdoc = require('swagger-jsdoc');
@@ -10,6 +11,26 @@ const app = express();
 
 const port = process.env.PORT || 8080;
 
+const allowedOrigins = ['http://localhost:3000',
+                      'http://localhost:3001',
+                      'http://localhost:4000',
+                      'http://localhost:8080',
+                      'https://simple-node-backend-app.herokuapp.com/',
+                      ];
+                      
+app.use(cors({
+  origin: function(origin, callback){
+
+    if(!origin) return callback(null, true); // Allows mobiles and tablets
+    if(allowedOrigins.indexOf(origin) === -1){
+      const msg = 'The CORS policy for this site does not ' +
+                'allow access from the Origin you are using.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
+
 app.use(bodyParser.json());
 
 /* Swagger Initialization - START */
@@ -21,7 +42,7 @@ const swaggerOption = {
             contact: {
                 name: "Dewalade",
             },
-            servers: ["http://localhost:3000/","https://simple-node-backend-app.herokuapp.com/test"],
+            servers: ["http://localhost:8080/",'http://localhost:3001','http://localhost:4000','http://localhost:8080',"https://simple-node-backend-app.herokuapp.com/test"],
         },
     }),
     apis: ["index.js", "./routes/*.js"],
@@ -32,13 +53,30 @@ const swaggerDocs = swaggerJsdoc(swaggerOption);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 /* Swagger Initialization - END */
 
-app.use('/index', ( req , res ) => {
-    console.log('Congrats! You are at first API home route!!')
+app.get('/', ( req , res ) => {
+    console.log('Congrats! You are at the first API home route!!')
     return res.status(200).send('Welcome to the first API homepage!')
 })
-// 
+
+/**
+* @swagger
+* /:
+*   get:
+*      description: Use this to test the first-API route
+*      tags:
+*          - home
+*      responses:
+*          '200':
+ *             description: Test Successful
+*          '400':
+*              description: Bad Request
+*          '500':
+*              description: Internal Server Error
+*/
+
+
 // TEST ENDPOINT
-app.use('/test', (req, res) => {
+app.get('/test', (req, res) => {
     console.log("Congrats! Your test route works!!!");
     return res.status(200).send('Test Successful. Welcome to the first-API backend!!');
 });
@@ -46,27 +84,10 @@ app.use('/test', (req, res) => {
 /**
 * @swagger
 * /test:
-*   post:
+*   get:
 *      description: Use this to test the first-API route
 *      tags:
 *          - test
-*      parameters:
-*          - in: body
-*            name: none
-*            description: No input data
-*            schema:
-*              type: object
-*          - out: body
-*            name: response
-*            description: This is the test output response
-*            schema:
-*              type: object
-*              properties:
-*                  body:
-*                      type: string
-*                      minLength: 1
-*                      maxLength: 45
-*                      example: Test Successful. Welcome to the first-API backend!!
 *      responses:
 *          '200':
  *             description: Test Successful
