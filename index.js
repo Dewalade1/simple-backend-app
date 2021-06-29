@@ -19,9 +19,9 @@ const swaggerOption = {
             title: "first Node API",
             description: "API documentation of my first Nodejs API",
             contact: {
-                name: "Dewa",
+                name: "Dewalade",
             },
-            servers: ["http://localhost:3000/"],
+            servers: ["http://localhost:3000/","https://simple-node-backend-app.herokuapp.com/test"],
         },
     }),
     apis: ["index.js", "./routes/*.js"],
