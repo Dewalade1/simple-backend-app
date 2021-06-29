@@ -39,7 +39,7 @@ app.use(bodyParser.json());
 
 /* Moesif Initialization - START */
 const moesifMiddleware = moesif({
-  applicationId: 'eyJhcHAiOiI5MzoxODMiLCJ2ZXIiOiIyLjAiLCJvcmciOiIyNjI6MjExIiwiaWF0IjoxNjIyNTA1NjAwfQ.BygawsOp86V4HLXdZ4G6DZ7h__QstUjCqpOvYYNZQJ0',
+  applicationId: process.env.MOESIF_APPLICATION_ID,
 
   // Optional hook to link API calls to users
   identifyUser: function (req, res) {
@@ -98,6 +98,7 @@ app.get('/', ( req , res ) => {
 
 // TEST ENDPOINT
 app.get('/test', (req, res) => {
+
     return res.status(200).send('Congrats! Test Successful. Welcome to the first-API backend!!');
 });
 

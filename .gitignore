@@ -3,3 +3,5 @@
 // Hidden Files
 /.history
 /.vscode
+
+/.env
