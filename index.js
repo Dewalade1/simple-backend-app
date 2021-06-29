@@ -1,5 +1,6 @@
 const cors = require('cors');
 const express = require('express');
+const moesif = require('moesif-nodejs');
 const bodyParser = require('body-parser');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
@@ -11,6 +12,7 @@ const app = express();
 
 const port = process.env.PORT || 8080;
 
+/* CORS Initialization - START */
 const allowedOrigins = ['http://localhost:3000',
                       'http://localhost:3001',
                       'http://localhost:4000',
@@ -30,8 +32,26 @@ app.use(cors({
     return callback(null, true);
   }
 }));
+/* CORS Initialization - END */
+
 
 app.use(bodyParser.json());
+
+/* Moesif Initialization - START */
+const moesifMiddleware = moesif({
+  applicationId: 'eyJhcHAiOiI5MzoxODMiLCJ2ZXIiOiIyLjAiLCJvcmciOiIyNjI6MjExIiwiaWF0IjoxNjIyNTA1NjAwfQ.BygawsOp86V4HLXdZ4G6DZ7h__QstUjCqpOvYYNZQJ0',
+
+  // Optional hook to link API calls to users
+  identifyUser: function (req, res) {
+    return req.user ? req.user.id : undefined;
+  },
+});
+
+moesifMiddleware.startCaptureOutgoing();
+
+app.use(moesifMiddleware);
+/* Moesif Initialization - END */
+
 
 /* Swagger Initialization - START */
 const swaggerOption = {
@@ -42,7 +62,7 @@ const swaggerOption = {
             contact: {
                 name: "Dewalade",
             },
-            servers: ["http://localhost:8080/",'http://localhost:3001','http://localhost:4000','http://localhost:8080',"https://simple-node-backend-app.herokuapp.com/test"],
+            servers: ["http://localhost:8080/",'http://localhost:3001','http://localhost:4000','http://localhost:8080',"https://simple-node-backend-app.herokuapp.com/"],
         },
     }),
     apis: ["index.js", "./routes/*.js"],
@@ -53,8 +73,9 @@ const swaggerDocs = swaggerJsdoc(swaggerOption);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 /* Swagger Initialization - END */
 
+
+// HOME ENDPOINT
 app.get('/', ( req , res ) => {
-    console.log('Congrats! You are at the first API home route!!')
     return res.status(200).send('Welcome to the first API homepage!')
 })
 
@@ -77,8 +98,7 @@ app.get('/', ( req , res ) => {
 
 // TEST ENDPOINT
 app.get('/test', (req, res) => {
-    console.log("Congrats! Your test route works!!!");
-    return res.status(200).send('Test Successful. Welcome to the first-API backend!!');
+    return res.status(200).send('Congrats! Test Successful. Welcome to the first-API backend!!');
 });
 
 /**
