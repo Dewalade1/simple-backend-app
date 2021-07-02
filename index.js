@@ -1,9 +1,12 @@
+require('dotenv').config({ path: "./.env"}) // install dotenv package first
+
 const cors = require('cors');
 const express = require('express');
 const moesif = require('moesif-nodejs');
 const bodyParser = require('body-parser');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+const moesifExpress = require('moesif-express');
 
 const postRoutes = require('./routes/posts.route');
 const userRoutes = require('./routes/users.route');
