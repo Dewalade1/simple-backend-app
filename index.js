@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const moesifExpress = require('moesif-express');
+// const moesifBrowser = require('moesif-browser-js');
 
 const postRoutes = require('./routes/posts.route');
 const userRoutes = require('./routes/users.route');
@@ -41,6 +42,10 @@ app.use(cors({
 app.use(bodyParser.json());
 
 /* Moesif Initialization - START */
+// moesifBrowser.init({
+  // applicationId: process.env.MOESIF_APPLICATION_ID,
+// });
+
 const moesifMiddleware = moesif({
   applicationId: process.env.MOESIF_APPLICATION_ID,
 
@@ -61,7 +66,7 @@ const swaggerOption = {
     swaggerDefinition: (swaggerJsdoc.Options = {
         info: {
             title: "first Node API",
-            description: "API documentation of my first Nodejs API",
+            description: "![node server logo]('./public/nodeserver-logo.png') API documentation of my first Nodejs API",
             contact: {
                 name: "Dewalade",
             },

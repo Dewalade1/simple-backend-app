@@ -21,7 +21,6 @@ This is a RESTFUL API for a blog build using nodejs. It is a test and has no spe
 
 ## NPM Packages Used
 
-* Swagger
 * [CORS](https://expressjs.com/en/resources/middleware/cors.html)
 * [Moestif](https://www.moesif.com/docs/)
 * [express](https://expressjs.com/)
