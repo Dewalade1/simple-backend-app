@@ -1,4 +1,5 @@
 const userService = require('../services/users.service');
+const { validationResult } = require('express-validator');
 
 exports.register = (req, res, next) => {
     // perform validations on request here
@@ -33,11 +34,22 @@ exports.register = (req, res, next) => {
 };
 
 exports.login = ( req, res, next) => {
-    // Validate login details here
+    // Validate login details
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()){
+        return res.status(400).json({
+            success: false,
+            data: 'Error In input',
+            errors: errors.array()
+        });
+    }
+
     const data = {
         emailId: req.body.emailId,
         password: req.body.password,
-    }
+    };
+
     userService.login(data, (error, results) => {
         if (error) {
             console.log(error);

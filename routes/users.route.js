@@ -1,8 +1,10 @@
 const userController = require('../controllers/users.controller');
 
-var express = require('express');
+const express = require('express');
+const { body } = require("express-validator");
 
-var router = express.Router();
+
+const router = express.Router();
 
 router.post('/register', userController.register);
 /**
@@ -56,7 +58,10 @@ router.post('/register', userController.register);
 */
 
 
-router.post('/login', userController.login);
+router.post("/login", 
+    body("emailId").isEmail().normalizeEmail(), 
+    body("password").isLength({ min: 5 }), 
+    userController.login);
 /**
 * @swagger
 * /users/login:

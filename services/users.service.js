@@ -24,9 +24,9 @@ exports.login = ( data, callback ) => {
             }
             
             if (results.length > 0) {
-                return callback(null, `User Login Successful`)
+                return callback(null, `User Login Successful`);
             } else {
-                return callback(null, "User Credentials Invalid")
+                return callback(null, "User Credentials Invalid");
             }
         }
     )

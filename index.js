@@ -131,7 +131,7 @@ app.use('/users', userRoutes);
 app.use('/posts', postRoutes);
 
 app.listen( port , () => {
-    console.log('\n[*] Starting first-post app');
+    console.log('\n[*] Starting first-node app');
     console.log('[+] App is now running');
     console.log('[+] Listening on port ' + port + '...');
 });
