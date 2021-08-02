@@ -38,6 +38,19 @@ This is a RESTFUL API for a blog build using nodejs. It is a test and has no spe
     * [Example Branches](https://github.com/Dewalade1/simple-backend-app/branches)
 * I worked documented and fixed bugs using GitHub Issues: [Example Issues](https://github.com/Dewalade1/simple-backend-app/issues)
 
+## Why I built the Project this way
+
+* I chose MySQL for the Database because it would help me practice my SQL queries.
+I chose to provision the [ClearDB MySQL addon](https://elements.heroku.com/addons/cleardb) from Heroku for this project
+
+* UI libraries are a great place to find ready-made components that help speed up the dev process. They can also be handy if one only needs a few cusom components. For these reasons, I used `Bootstrap 4` and `Material UI` to style and build the contact form on this website.
+
+* My plan is to become a FullStack Engineer eventually which is why I chose to work on this project. I built this API using the expressJS framework in NodeJS.
+
+* I chose to document my RESTful API Server and the database used for ease of access to information about the API and its database. 
+    * The API docs can be found here: [Link to API docs](https://simple-node-backend-app.herokuapp.com/api-docs/).
+    * The database was documented here: [Link to Database docs](https://dbdocs.io/Dewalade1/Simple_node_backend)
+
 ## How to setup the app
 
 ### Option 1
