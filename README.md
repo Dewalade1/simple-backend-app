@@ -28,6 +28,16 @@ This is a RESTFUL API for a blog build using nodejs. It is a test and has no spe
 * [Heroku](https://www.heroku.com/) - for hosting the app
 * [Git and GitHub](https://git-scm.com) - for tracking, storage and version control
 
+## How I worked on this Project
+
+* I based the database schema on this design: [Link to Schema](./public/app-sql-schema.png)
+* I documented the database using [DBDocs](https://dbdocs.io/): [Link to Database docs](https://dbdocs.io/Dewalade1/Simple_node_backend)
+* I tested and documented the API routes and responses using [Swagger](https://swagger.io/tools/swagger-ui/): [Link to API docs](https://simple-node-backend-app.herokuapp.com/api-docs/)
+* I used feature branches and pull requests in this Project
+    * [Example PRs](https://github.com/Dewalade1/simple-backend-app/pulls?q=is%3Apr+is%3Aclosed)
+    * [Example Branches](https://github.com/Dewalade1/simple-backend-app/branches)
+* I worked documented and fixed bugs using GitHub Issues: [Example Issues](https://github.com/Dewalade1/simple-backend-app/issues)
+
 ## How to setup the app
 
 ### Option 1
@@ -96,19 +106,18 @@ You will also see any compile and lint errors in the console.
 
 ## Useful Links
 
-* [API home route](https://simple-node-backend-app.herokuapp.com/)
-* [API docs](https://simple-node-backend-app.herokuapp.com/api-docs/)
+* [Link to API docs](https://simple-node-backend-app.herokuapp.com/api-docs/)
+* [Link to Database docs](https://dbdocs.io/Dewalade1/Simple_node_backend)
+* [Link to API home route](https://simple-node-backend-app.herokuapp.com/)
+* [Link to Database schema](./public/app-sql-schema.png)
 
 ## Notes
 
 * The API docs allow users test the API by clicking the 'Try it out' button.
 
-## SQL Database Schema
-
-![db schema](./public/app-sql-schema.png)
-
 ## Further Improvements
 
 * validate data using express-validator
+* Hash the Passwords using BScript
 
 ![swaggerfornodejs](./public/swaggerfornodejs.jpg)
