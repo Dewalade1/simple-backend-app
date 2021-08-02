@@ -28,6 +28,29 @@ This is a RESTFUL API for a blog build using nodejs. It is a test and has no spe
 * [Heroku](https://www.heroku.com/) - for hosting the app
 * [Git and GitHub](https://git-scm.com) - for tracking, storage and version control
 
+## How I worked on this Project
+
+* I based the database schema on this design: [Link to Schema](./public/app-sql-schema.png)
+* I documented the database using [DBDocs](https://dbdocs.io/): [Link to Database docs](https://dbdocs.io/Dewalade1/Simple_node_backend)
+* I tested and documented the API routes and responses using [Swagger](https://swagger.io/tools/swagger-ui/): [Link to API docs](https://simple-node-backend-app.herokuapp.com/api-docs/)
+* I used feature branches and pull requests in this Project
+    * [Example PRs](https://github.com/Dewalade1/simple-backend-app/pulls?q=is%3Apr+is%3Aclosed)
+    * [Example Branches](https://github.com/Dewalade1/simple-backend-app/branches)
+* I worked documented and fixed bugs using GitHub Issues: [Example Issues](https://github.com/Dewalade1/simple-backend-app/issues)
+
+## Why I built the Project this way
+
+* I chose MySQL for the Database because it would help me practice my SQL queries.
+I chose to provision the [ClearDB MySQL addon](https://elements.heroku.com/addons/cleardb) from Heroku for this project
+
+* UI libraries are a great place to find ready-made components that help speed up the dev process. They can also be handy if one only needs a few cusom components. For these reasons, I used `Bootstrap 4` and `Material UI` to style and build the contact form on this website.
+
+* My plan is to become a FullStack Engineer eventually which is why I chose to work on this project. I built this API using the expressJS framework in NodeJS.
+
+* I chose to document my RESTful API Server and the database used for ease of access to information about the API and its database. 
+    * The API docs can be found here: [Link to API docs](https://simple-node-backend-app.herokuapp.com/api-docs/).
+    * The database was documented here: [Link to Database docs](https://dbdocs.io/Dewalade1/Simple_node_backend)
+
 ## How to setup the app
 
 ### Option 1
@@ -96,19 +119,18 @@ You will also see any compile and lint errors in the console.
 
 ## Useful Links
 
-* [API home route](https://simple-node-backend-app.herokuapp.com/)
-* [API docs](https://simple-node-backend-app.herokuapp.com/api-docs/)
+* [Link to API docs](https://simple-node-backend-app.herokuapp.com/api-docs/)
+* [Link to Database docs](https://dbdocs.io/Dewalade1/Simple_node_backend)
+* [Link to API home route](https://simple-node-backend-app.herokuapp.com/)
+* [Link to Database schema](./public/app-sql-schema.png)
 
 ## Notes
 
 * The API docs allow users test the API by clicking the 'Try it out' button.
 
-## SQL Database Schema
-
-![db schema](./public/app-sql-schema.png)
-
 ## Further Improvements
 
 * validate data using express-validator
+* Hash the Passwords using BScript
 
 ![swaggerfornodejs](./public/swaggerfornodejs.jpg)
